@@ -175,7 +175,7 @@ const SignupForm = () => {
 							styles.submitButton.backgroundColor)
 					}
 				>
-					Submit
+					Submit Form
 				</button>
 			</form>
 		</div>
