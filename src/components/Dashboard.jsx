@@ -1,17 +1,44 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
+import { useEffect } from "react";
 
 const Dashboard = () => {
-	const user = "Nishant Kandel";
-
 	const navigate = useNavigate();
 
 	const { logout, token } = useAuth();
+
+	const [user, setUser] = useState({});
+
+	const API = "http://194.238.22.66:8003";
+
+	async function fetchUser() {
+		try {
+			const response = await fetch(API + "/api/auth/user", {
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: "Bearer " + token,
+				},
+			});
+			if (response.ok) {
+				const responseData = await response.json();
+				setUser(responseData.userData);
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
+	console.log(user);
 
 	const handleLogout = () => {
 		logout();
 		navigate("/login"); // Redirect to login page after logout
 	};
+
+	useEffect(() => {
+		if (!token) navigate("/login"); // Redirect to login if not authenticated
+		fetchUser();
+	}, []);
 
 	return (
 		<div className="min-h-screen flex items-center justify-center bg-gray-100">
