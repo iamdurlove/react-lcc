@@ -1,5 +1,17 @@
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthProvider";
+
 const Dashboard = () => {
 	const user = "Nishant Kandel";
+
+	const navigate = useNavigate();
+
+	const { logout, token } = useAuth();
+
+	const handleLogout = () => {
+		logout();
+		navigate("/login"); // Redirect to login page after logout
+	};
 
 	return (
 		<div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -10,7 +22,10 @@ const Dashboard = () => {
 				<p className="mb-8 text-gray-600">
 					You are now logged in to your dashboard.
 				</p>
-				<button className="bg-blue-600 text-white px-6 py-2 rounded-md font-semibold hover:bg-blue-700 transition duration-200">
+				<button
+					onClick={handleLogout}
+					className="bg-blue-600 text-white px-6 py-2 rounded-md font-semibold hover:bg-blue-700 transition duration-200"
+				>
 					Logout
 				</button>
 			</div>
