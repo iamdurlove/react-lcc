@@ -3,13 +3,14 @@ import * as Yup from "yup";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
+import { useEffect } from "react";
 
 const API = "http://194.238.22.66:8003";
 
 const LoginForm = () => {
 	const navigate = useNavigate();
 
-	const { storeToken } = useAuth();
+	const { storeToken, token } = useAuth();
 
 	const formik = useFormik({
 		initialValues: {
@@ -42,6 +43,10 @@ const LoginForm = () => {
 			}
 		},
 	});
+
+	useEffect(() => {
+		if (token) navigate("/dashboard"); // Redirect to dashboard if already logged in
+	}, []);
 
 	return (
 		<div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
