@@ -15,7 +15,7 @@ const Navbar = () => {
 				<img width={200} src="daraz.png" alt="" />
 			</div>
 			<div className="nav-links">
-				<ul>
+				<ul className="flex gap-4">
 					{NavItem.map((item, i) => {
 						return (
 							<li key={item.id}>
