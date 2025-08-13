@@ -1,7 +1,18 @@
+import { useEffect, useState } from "react";
 import Card from "../components/Card";
 import Movies from "../data/Movies";
+import Loader from "../components/Loader";
 
 const MoviesPage = () => {
+	const [loading, setLoading] = useState(true);
+
+	useEffect(() => {
+		setTimeout(() => {
+			setLoading(false);
+		}, 3000);
+	});
+
+	if (loading) return <Loader />;
 	return (
 		<>
 			<h1 style={{ textAlign: "center" }}>Movies Page</h1>

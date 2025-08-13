@@ -19,7 +19,7 @@ const UseState = () => {
 	return (
 		<div>
 			{count} <br />
-			<button onClick={handleIncrease} type="button">
+			<button className="bg-red-500" onClick={handleIncrease} type="button">
 				Increase
 			</button>
 			<button onClick={handleDecrease} type="button">

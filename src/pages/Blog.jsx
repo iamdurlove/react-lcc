@@ -1,5 +1,10 @@
+import { use } from "react";
+import { LearnContext } from "../context/MyContext";
+
 const Blog = () => {
-	return <div>Blog</div>;
+	const { college } = use(LearnContext);
+
+	return <div>Blog, {college}</div>;
 };
 
 export default Blog;

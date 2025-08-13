@@ -1,47 +1,21 @@
 import { Link } from "react-router-dom";
 import NavItem from "../data/NavItem";
+import { useTheme } from "../context/ThemeContext";
 
 const Navbar = () => {
+	const { theme, setTheme } = useTheme();
+
 	function handleClick() {
-		alert("Button clicked!");
+		setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
 	}
 
 	return (
-		<div className="nav">
+		<div className="bg-black h-[10vh] text-white flex justify-between items-center p-4">
 			<div>
-				<img width={200} src="/public/daraz.png" alt="" />
+				<img width={200} src="daraz.png" alt="" />
 			</div>
 			<div className="nav-links">
 				<ul>
-					{/* <li>
-						<Link to="/">
-							<FaHome /> Home
-						</Link>
-					</li>
-					<li>
-						<Link to="/about">
-							<FaPerson /> About
-						</Link>
-					</li>
-					<li>
-						<Link to="/contact">
-							<FaPhone /> Contact
-						</Link>
-					</li>
-					<li>
-						<Link to="/blog">
-							<FaGlobe /> Blog
-						</Link>
-					</li>
-					<li>
-						<Link to="/movies">
-							<FaFilm /> Movies
-						</Link>
-					</li>
-					<li>
-						<button onMouseOut={handleClick}>Click me</button>
-					</li> */}
-
 					{NavItem.map((item, i) => {
 						return (
 							<li key={item.id}>
@@ -51,6 +25,9 @@ const Navbar = () => {
 							</li>
 						);
 					})}
+					{/* <li>
+						<button onClick={handleClick}>{theme + "kj"}</button>
+					</li> */}
 				</ul>
 			</div>
 		</div>

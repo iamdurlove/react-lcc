@@ -12,6 +12,9 @@ import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
 import MoviesPage from "./pages/Movies";
 import SignupForm from "./components/SignupForm";
+import Register from "./pages/Register";
+import LoginForm from "./components/LoginForm";
+import Dashboard from "./components/Dashboard";
 
 function App() {
 	return (
@@ -25,7 +28,9 @@ function App() {
 					<Route path="/contact" element={<Contact />} />
 					<Route path="/blog" element={<Blog />} />
 					<Route path="/movies" element={<MoviesPage />} />
-					<Route path="/register" element={<SignupForm />} />
+					<Route path="/register" element={<Register />} />
+					<Route path="/login" element={<LoginForm />} />
+					<Route path="/dashboard" element={<Dashboard />} />
 				</Routes>
 			</BrowserRouter>
 

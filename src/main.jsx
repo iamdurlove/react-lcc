@@ -1,8 +1,10 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import { Flip, ToastContainer } from "react-toastify";
+import MyContext from "./context/MyContext.jsx";
+import ThemeProvider from "./context/ThemeContext.jsx";
+import AuthProvider from "./context/AuthProvider.jsx";
 
 createRoot(document.getElementById("root")).render(
 	<>
@@ -20,7 +22,14 @@ createRoot(document.getElementById("root")).render(
 			theme="dark"
 			transition={Flip}
 		/>
-		<App />
+
+		<AuthProvider>
+			<MyContext>
+				<ThemeProvider>
+					<App />
+				</ThemeProvider>
+			</MyContext>
+		</AuthProvider>
 		{/* </StrictMode> */}
 	</>
 );
